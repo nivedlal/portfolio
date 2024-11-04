@@ -1,13 +1,53 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --theme-color: #e6e1d7;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--theme-color);
+  font-family: 'CruyffSans', sans-serif;
+}
+
+@font-face {
+  font-family: 'CruyffSans';
+  font-weight: 300; 
+  font-style: normal;
+  src: url('../public/CruyffSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'CruyffSans';
+  font-weight: 400; 
+  font-style: normal;
+  src: url('../public/CruyffSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'CruyffSans';
+  font-weight: 700; 
+  font-style: normal;
+  src: url('../public/CruyffSans-Bold.woff2') format('woff2');
+}
+
+.hover-text {
+  display: flex;
+  position: relative;
+}
+
+.hover-span {
+  position: absolute;
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  transform-origin: center;
+  transition: all cubic-bezier(.1, .5, .5, 1) 0.4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0;
+}
+
+.hover-text:hover>span {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
