@@ -38,7 +38,7 @@ function Stack() {
     };
   }, []);
 
-  const proficiencyData = [85, 90, 52, 51, 74, 76, 54, 53, 50];
+  const proficiencyData = [85, 90, 52, 51, 74, 76, 54, 53, 50, 62];
 
   const options = {
     series: [
@@ -70,6 +70,7 @@ function Stack() {
         "Blazor",
         ".NET Core",
         "T-SQL",
+        "Three.JS"
       ],
       labels: {
         formatter: (value) => value + "%",
