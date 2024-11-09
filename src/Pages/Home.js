@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,33 +19,50 @@ function Home() {
         },
       });
     });
+
+    const updateSavedColors = () => {
+      const savedData = JSON.parse(localStorage.getItem('themeData')) || {};
+      setSavedColors(savedData.colors || []);
+    };
+
+    updateSavedColors();
+    const handleThemeChange = () => {
+      updateSavedColors();
+    };
+    window.addEventListener('themeChange', handleThemeChange);
+    return () => {
+      window.removeEventListener('themeChange', handleThemeChange);
+    };
   }, []);
+
+  const [savedColors, setSavedColors] = useState([]);
+
 
   return (
     <>
-      <div className="md:flex flex-row-reverse justify-between gap-4 w-full overflow-y-auto h-[28rem] md:h-auto mb-4 md:mb-0">
-      <div className="md:w-1/3 flex">
-          <img src="HeroImage2.png" alt="Profile Picture" />
-        </div>
-        <div className="md:w-4/6 flex flex-col justify-center xl:text-2xl 2xl:text-4xl">
-          <div className="bg-gray-400 py-2 px-4 m-1 md:m-2 bg-opacity-30 hover-text uppercase w-fit cursor-default italic font-bold ">
-            HELLO
-            <span className="w-full bg-gray-400 p-2 hover-span">HOWDY</span>
+      <div className="md:flex justify-center w-full mb-4 md:mb-0">
+        <div>
+          <div className="flex justify-center">
+            <div className="w-auto">
+              <p className="text-xl lg:text-3xl 2xl:text-4xl">
+                NIVED<span className="opacity-40">LAL PRAKASH</span>
+              </p>
+              <p className="text-6xl lg:text-9xl 2xl:text-[10rem]">PORTFOLIO</p>
+              <p className="text-end text-xl lg:text-3xl 2xl:text-4xl">WEB DEVELOPER</p>
+            </div>
           </div>
-          <div className="p-1 md:p-2">
-            <p className="text-2xl uppercase xl:text-5xl 2xl:text-6xl md:mb-2 tracking-wide">
-              I'M NIVED
-            </p>
-            <p className="md:my-2">
-              Welcome to my digital playground! I'm a Software Engineer from
-              India. I merge technology with creativity to craft immersive
-              web experiences.
-            </p>
-            <p className="opacity-50">
-              With a passion for design, coding, and user interaction, I strive
-              to create unique solutions that not only look great but also
-              function seamlessly.
-            </p>
+          <div className="lg:text-xl 2xl:text-2xl text-center">
+          <p className="mt-10 2xl:mt-12">
+            Welcome to my <span className="curly"  style={{ color: savedColors[1] }}>digital</span> playground! I'm a Software Engineer from
+            India.
+          </p>
+          <p>
+            I merge technology with creativity to craft <span className="curly"  style={{ color: savedColors[1] }}>immersive</span> web
+            experiences.
+          </p>
+          <p>
+            I strive to create unique <span className="curly"  style={{ color: savedColors[1] }}>solutions</span> that looks great & function seamlessly.
+          </p>
           </div>
         </div>
       </div>

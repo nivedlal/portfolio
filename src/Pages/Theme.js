@@ -65,7 +65,7 @@ function Theme() {
       {themes.map((theme, index) => (
         <div
           key={index}
-          className="md:w-1/4 flex justify-center md:justify-end my-4 md:my-0 relative h-full w-full bg-gray-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100"
+          className="md:w-1/4 flex justify-center md:justify-end gap-2 relative h-full w-full bg-gray-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100"
           onClick={() => handleClick(index)}
         >
           <img
