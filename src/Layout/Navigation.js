@@ -1,6 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { useNavigate, useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const menuItems = [
   { id: 1, title: "Home", path: "/", image: "home.png" },
@@ -40,6 +44,7 @@ function Navigation() {
   const [savedColors, setSavedColors] = useState([]);
   const [savedOpacity, setSavedOpacity] = useState([]);
   const [invert, setInvert] = useState([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const updateSavedColors = () => {
@@ -52,6 +57,24 @@ function Navigation() {
     updateSavedColors();
     const handleThemeChange = () => {
       updateSavedColors();
+      setIsTransitioning(true);
+      gsap.to(".navbar", {
+        opacity: 0,
+        x: -1000,
+        duration: 1,
+        onComplete: () => {
+          updateSavedColors(); 
+          gsap.to(".navbar", {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: "power4.out", 
+            onComplete: () => {
+              setIsTransitioning(false);
+            },
+          });
+        },
+      });
     };
     window.addEventListener('themeChange', handleThemeChange);
     return () => {
@@ -59,6 +82,21 @@ function Navigation() {
     };
   }, []);
 
+  useEffect(() => {
+    gsap.fromTo(
+      ".navbar",
+      {
+        opacity: 0,
+        x: 1000, 
+      },
+      {
+        opacity: 1,
+        x: 0, 
+        duration: 4, 
+        ease: "power4.out", 
+      }
+    );
+  }, []);
 
   const settings = {
     dots: false,
@@ -117,10 +155,12 @@ function Navigation() {
   }, []);
 
   const handleItemClick = (path) => {
+    if (isTransitioning) return;
     navigate(path);
   };
+
   return (
-    <div className="slider-container overflow-x-hidden h-40">
+    <div className="slider-container overflow-x-hidden h-40 navbar">
       <Slider ref={sliderRef} {...settings}>
         {menuItems.map((item) => {
           const primaryColor = savedColors[0] || "#e6e1d7";

@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative h-dvh flex flex-col px-6 py-4">
+    <div className="relative h-dvh flex flex-col px-6 py-4 overflow-x-hidden">
       <div
         className="absolute inset-0 bg-center bg-cover blur-sm"
         style={{ backgroundImage: `url(${savedBg})` }}

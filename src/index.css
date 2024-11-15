@@ -123,7 +123,9 @@ body {
   font-weight: 400;
   font-style: italic;
   font-size: larger;
-  margin-right: 0.25rem;
+  margin: 0.4rem;
+  margin-right: 0.6rem;
+  line-height: 0;
 }
 
 .hover-text {

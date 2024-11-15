@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ApexCharts from "apexcharts";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Stack() {
   const [chartHeight, setChartHeight] = useState(335);
@@ -8,7 +12,7 @@ function Stack() {
   useEffect(() => {
     const updateSavedColors = () => {
       const savedData = JSON.parse(localStorage.getItem("themeData")) || {};
-      setSavedColors(savedData.colors || []);
+      setSavedColors(savedData.colors || ["#e6e1d7", "#a48c58", "#0d1119"]);
     };
 
     updateSavedColors();
@@ -120,16 +124,76 @@ function Stack() {
     };
   }, [options, chartHeight]);
 
+  useEffect(()=>{
+    gsap.fromTo(
+      ".animate-top",
+      {
+        opacity: 0, 
+        x: -20, 
+      },
+      {
+        opacity: 1, 
+        x: 0, 
+        duration: 0.3,
+        stagger: 0.3,
+        delay: 1, 
+      }
+    );
+    gsap.fromTo(
+      ".animate",
+      {
+        opacity: 0, 
+        y: 20, 
+      },
+      {
+        opacity: 1, 
+        y: 0, 
+        duration: 1,
+        stagger: 0.5,
+        delay: 1, 
+        ease: "bounce.out",
+      }
+    );
+    gsap.fromTo(
+      ".animate-left",
+      {
+        opacity: 0, 
+        y: -20, 
+      },
+      {
+        opacity: 1, 
+        y: 0, 
+        duration: 3,
+        stagger: 0.5,
+        delay: 2, 
+      }
+    );
+    gsap.fromTo(
+      ".animate-right",
+      {
+        opacity: 0, 
+        x: 20, 
+      },
+      {
+        opacity: 1, 
+        x: 0, 
+        duration: 4,
+        stagger: 0.5,
+        delay: 3, 
+      }
+    );
+  }, []);
+
   return (
-    <div className="p-4 w-full overflow-y-auto h-[28rem] 2xl:h-[35rem]">
+    <div className="p-4 w-full overflow-y-auto h-[28rem] 2xl:h-[35rem] overflow-x-hidden">
       <div className="lg:flex justify-between w-full gap-4 items-center h-full">
         <div className="lg:w-3/4 flex flex-col justify-between">
           <div
-            className="w-full p-4 h-max border border-gray-100"
+            className="w-full p-4 h-max border border-gray-100 animate-top"
             style={{ backgroundColor: savedColors[2] }}
           >
             <div className="flex justify-between">
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center animate">
                 <img
                   src="research.png"
                   alt="research"
@@ -137,7 +201,7 @@ function Stack() {
                 />
                 <span className="text-xs lg:text-base">Research</span>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center animate">
                 <img
                   src="design.png"
                   alt="design"
@@ -145,7 +209,7 @@ function Stack() {
                 />
                 <span className="text-xs lg:text-base">Design</span>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center animate">
                 <img
                   src="development.png"
                   alt="development"
@@ -153,7 +217,7 @@ function Stack() {
                 />
                 <span className="text-xs lg:text-base">Development</span>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center animate">
                 <img
                   src="execution.png"
                   alt="execution"
@@ -163,10 +227,10 @@ function Stack() {
               </div>
             </div>
           </div>
-          <div id="skill-chart" className="flex items-end mb-2 lg:mb-0"></div>
+          <div id="skill-chart" className="flex items-end mb-2 lg:mb-0 animate-left"></div>
         </div>
-        <div className="lg:w-1/4 w-full p-4 h-full border border-gray-100">
-          <div className="p-4 w-full">
+        <div className="lg:w-1/4 w-full p-4 h-full border border-gray-100 animate-right">
+          <div className="p-2 lg:p-4 w-full">
             <div className="py-2 px-4 flex justify-between"
             style={{ backgroundColor: savedColors[2] }}><span>Perfection in progress</span><span>x</span></div>
             <div className="bg-gray-100 bg-opacity-10">
@@ -176,7 +240,7 @@ function Stack() {
                     className="h-10 border border-gray-950 rounded-sm p-2"
                     style={{ width: "70%", backgroundColor: savedColors[1], color: savedColors[2] }}
                   >70%</div>
-                  <p style={{ color: savedColors[2] }} className="text-6xl font-bold">∞</p>
+                  <p style={{ color: savedColors[2] }} className="text-3xl lg:text-6xl font-bold">∞</p>
                 </div>
               </div>
             </div>
