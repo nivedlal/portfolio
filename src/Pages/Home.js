@@ -59,15 +59,15 @@ function Home() {
       <div className="md:flex w-full justify-between">
         <div>
           <div className="w-auto">
-            <p className="text-xl lg:text-3xl 2xl:text-4xl animate ms-2">
+            <p className="text-xl lg:text-3xl 2xl:text-4xl animate ms-1 md:ms-2">
               NIVED<span className="opacity-40">LAL PRAKASH</span>
             </p>
-            <span className="text-6xl lg:text-9xl 2xl:text-[10rem] portfolio tracking-widest">
+            <span className="text-6xl lg:text-9xl 2xl:text-[10rem] portfolio md:tracking-widest">
               {"PORTFOLIO".split("").map((letter, index) => (
                 <span key={index}>{letter}</span>
               ))}
             </span>
-            <p className="text-end text-xl lg:text-3xl 2xl:text-4xl animate me-4">
+            <p className="text-end text-xl lg:text-3xl 2xl:text-4xl animate me-3 md:me-4">
               WEB DEVELOPER
             </p>
           </div>

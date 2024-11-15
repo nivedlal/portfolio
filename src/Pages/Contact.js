@@ -103,7 +103,7 @@ function Contact() {
   const handleChange = ({target: {name, value}})=>{ setForm({...form, [name]: value})}
   const handleSubmit = (e) => {
     e.preventDefault(); 
-    const body = encodeURIComponent(`Hello, there is a message from ${form.name}, that says "${form.message}".`);
+    const body = encodeURIComponent(`Hi there, I'm ${form.name}, and I just wanted to reach out to say "${form.message}".`);
     const mailtoLink = `mailto:nivedlalp@gmail.com?subject=${form.subject}&body=${body}`;
     window.location.href = mailtoLink;
   };
