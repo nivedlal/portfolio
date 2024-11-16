@@ -1,9 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Preference = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirm, setIsConfirm] = useState(false);
   const [savedColors, setSavedColors] = useState([]);
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      gsap.fromTo(
+        modalRef.current,
+        { opacity: 0, scale: 0, y: -100 },
+        { opacity: 1, scale: 1, duration: 1, ease: "bounce.out", y: 0}
+      );
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     const updateSavedColors = () => {
@@ -73,7 +88,7 @@ const Preference = () => {
           onClick={closeModal}
           className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto bg-black bg-opacity-70"
         >
-          <div className="relative w-full max-w-md max-h-full p-4">
+          <div className="relative w-full max-w-md max-h-full p-4" ref={modalRef}>
             <div className="rounded-lg shadow bg-gray-700 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-30 border border-gray-100">
               {!isConfirm ? (
                 <div className="p-4 md:p-5">

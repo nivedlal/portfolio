@@ -9,6 +9,7 @@ import Theme from "./Pages/Theme";
 import Contact from "./Pages/Contact";
 import { useState, useEffect } from "react";
 import Preference from "./Components/Preference";
+import Ribbon from "./Components/Ribbon";
 
 function App() {
   const [savedBg, setSavedBg] = useState([]);
@@ -37,6 +38,7 @@ function App() {
         style={{ backgroundImage: `url(${savedBg})` }}
       />
       <Preference/>
+      <Ribbon/>
       <div className="absolute inset-0 bg-black opacity-50" />
       <div className="flex flex-[9] items-center relative z-10">
         <Routes>
