@@ -134,7 +134,7 @@ function Contact() {
               </p>
               <div className="flex gap-4 justify-center md:mb-1 2xl:mb-4">
                 <a
-                  href="#"
+                  href="http://linkedin.com/in/nivedlal-prakash-9b8"
                   className="rounded-full flex justify-center items-center icons"
                   style={{
                     background: "#ecf0f3",
@@ -150,7 +150,7 @@ function Contact() {
                   ></div>
                 </a>
                 <a
-                  href="#"
+                  href="https://behance.net/nivedlalprakash"
                   className="rounded-full flex justify-center items-center icons"
                   style={{
                     background: "#ecf0f3",
@@ -166,7 +166,7 @@ function Contact() {
                   ></div>
                 </a>
                 <a
-                  href="#"
+                  href="https://instagram.com/nivedlalp"
                   className="rounded-full flex justify-center items-center icons"
                   style={{
                     background: "#ecf0f3",
@@ -182,7 +182,7 @@ function Contact() {
                   ></div>
                 </a>
                 <a
-                  href="#"
+                  href="https://dribbble.com/nivedlal"
                   className="rounded-full flex justify-center items-center icons"
                   style={{
                     background: "#ecf0f3",

@@ -8,6 +8,7 @@ import Resume from "./Pages/Resume";
 import Theme from "./Pages/Theme";
 import Contact from "./Pages/Contact";
 import { useState, useEffect } from "react";
+import Preference from "./Components/Preference";
 
 function App() {
   const [savedBg, setSavedBg] = useState([]);
@@ -30,16 +31,13 @@ function App() {
   }, []);
 
   return (
-    <div className="relative h-dvh flex flex-col px-6 py-4 overflow-x-hidden">
+    <div className="relative h-dvh flex flex-col py-4 px-6 overflow-x-hidden">
       <div
         className="absolute inset-0 bg-center bg-cover blur-sm"
         style={{ backgroundImage: `url(${savedBg})` }}
       />
+      <Preference/>
       <div className="absolute inset-0 bg-black opacity-50" />
-      <div
-        className="absolute inset-0 bg-center bg-cover hidden"
-        style={{ backgroundImage: "url('overlay.png')" }}
-      />
       <div className="flex flex-[9] items-center relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />

@@ -15,28 +15,6 @@ const menuItems = [
   { id: 6, title: "Contact", path: "/Contact", image: "contact.png" },
 ];
 
-function Next(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} hover:bg-gray-600 bg-gray-600 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50`}
-      style={{ ...style, display: "block", right: "0"}}
-      onClick={onClick}
-    />
-  );
-}
-
-function Previous(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} hover:bg-gray-600 bg-gray-600 rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50`}
-      style={{ ...style, display: "block", left: "0", zIndex: "10" }}
-      onClick={onClick}
-    />
-  );
-}
-
 function Navigation() {
   const sliderRef = useRef(null);
   const navigate = useNavigate();
@@ -99,14 +77,12 @@ function Navigation() {
   }, []);
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 5,
+    slidesToShow: 5, 
+    focusOnSelect: true,
     swipeToSlide: true,
     speed: 500,
-    nextArrow: <Next />,
-    prevArrow: <Previous />,
     responsive: [
       {
         breakpoint: 1024,
@@ -168,7 +144,7 @@ function Navigation() {
           const accentColor = savedColors[2] || "#a48c58";
           
           return (
-            <div key={item.id} className="p-4 flex justify-center">
+            <div key={item.id} className="py-4 pe-8 flex justify-center">
               <div
                 className={`relative group py-4 px-8 inline-flex items-center z-10 transition duration-500 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] cursor-pointer uppercase tracking-wider w-full text-center`}
                 style={{

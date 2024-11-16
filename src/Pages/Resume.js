@@ -108,7 +108,7 @@ function Resume() {
           <section>
             <article className="flex gap-4">
               <header className="w-1/6 animate">
-                <time datetime="2023-01-01">2023 — Present</time>
+                <time dateTime="2023-01-01">2023 — Present</time>
               </header>
               <div className="w-5/6">
                 <h3 className="font-bold animate">
@@ -189,7 +189,7 @@ function Resume() {
             </article>
             <article className="flex gap-4 mt-6">
               <header className="w-1/6 animate">
-                <time datetime="2022-01-01">2022 — 2023</time>
+                <time dateTime="2022-01-01">2022 — 2023</time>
               </header>
               <div className="w-5/6">
                 <h3 className="font-bold animate">
