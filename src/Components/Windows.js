@@ -30,10 +30,19 @@ function Windows() {
   const [finalScore, setFinalScore] = useState(null); 
   const [gameStarted, setGameStarted] = useState(false);
   const [theme, setTheme] = useState('dark');
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const gameIntervalRef = useRef(null);
   const terminalRef = useRef(null);
   const inputRef = useRef(null);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setUserInput(inputValue);
@@ -72,7 +81,7 @@ function Windows() {
   }, [commandHistory]);
   useEffect(() => {
     const handleClick = () => {
-      if (inputRef.current) {
+      if (inputRef.current && isLargeScreen) {
         inputRef.current.focus();
       }
     };
@@ -80,7 +89,7 @@ function Windows() {
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, []);
+  }, [isLargeScreen]);
   const handleInputSubmit = (e) => {
     if (isGameRunning) return; 
     if (e.key === 'Enter') {
