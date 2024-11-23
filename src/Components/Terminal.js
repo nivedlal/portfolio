@@ -263,7 +263,7 @@ function Terminal({ closeModal }) {
       if (command === "hello") {
         setCommandHistory([
           ...commandHistory,
-          "Available commands: HELLO, TYPE, CD, LS, LIGHT, DARK, CLEAR, CLOSE",
+          "Available commands: HELLO, TYPE, CD, LS, LIGHT, DARK, CLEAR, CLOSE. Note: Type CD 'Directory'; Eg. CD Home",
         ]);
       } else if (command === "clear") {
         setCommandHistory([]);
@@ -397,7 +397,7 @@ function Terminal({ closeModal }) {
       <div className="mt-4">
         <div className="flex gap-2">
           <span>
-            C:\Users\Guest\{currentDirectory}
+            C:\Users\{currentDirectory}
             {">"}
           </span>
           <input

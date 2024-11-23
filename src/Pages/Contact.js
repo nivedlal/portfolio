@@ -136,6 +136,7 @@ function Contact() {
                 <a
                   href="http://linkedin.com/in/nivedlal-prakash-9b8"
                   className="rounded-full flex justify-center items-center icons"
+                  target="_blank"
                   style={{
                     background: "#ecf0f3",
                     boxShadow: "-3px -3px 7px #ffffff, 3px 3px 5px #ceced1",
@@ -152,6 +153,7 @@ function Contact() {
                 <a
                   href="https://behance.net/nivedlalprakash"
                   className="rounded-full flex justify-center items-center icons"
+                  target="_blank"
                   style={{
                     background: "#ecf0f3",
                     boxShadow: "-3px -3px 7px #ffffff, 3px 3px 5px #ceced1",
@@ -168,6 +170,7 @@ function Contact() {
                 <a
                   href="https://instagram.com/nivedlalp"
                   className="rounded-full flex justify-center items-center icons"
+                  target="_blank"
                   style={{
                     background: "#ecf0f3",
                     boxShadow: "-3px -3px 7px #ffffff, 3px 3px 5px #ceced1",
@@ -184,6 +187,7 @@ function Contact() {
                 <a
                   href="https://dribbble.com/nivedlal"
                   className="rounded-full flex justify-center items-center icons"
+                  target="_blank"
                   style={{
                     background: "#ecf0f3",
                     boxShadow: "-3px -3px 7px #ffffff, 3px 3px 5px #ceced1",
